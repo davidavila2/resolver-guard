@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@resolver-guard/core-data": ["libs/core-data/src/index.ts"],
+      "@resolver-guard/core-state": ["libs/core-state/src/index.ts"],
+      "@resolver-guard/material": ["libs/material/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

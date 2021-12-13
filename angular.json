@@ -1,6 +1,58 @@
 {
   "version": 1,
   "projects": {
+    "core-data": {
+      "projectType": "library",
+      "root": "libs/core-data",
+      "sourceRoot": "libs/core-data/src",
+      "prefix": "resolver-guard",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core-data"],
+          "options": {
+            "jestConfig": "libs/core-data/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core-data/src/**/*.ts",
+              "libs/core-data/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "core-state": {
+      "projectType": "library",
+      "root": "libs/core-state",
+      "sourceRoot": "libs/core-state/src",
+      "prefix": "resolver-guard",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core-state"],
+          "options": {
+            "jestConfig": "libs/core-state/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core-state/src/**/*.ts",
+              "libs/core-state/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "dashboard": {
       "projectType": "application",
       "root": "apps/dashboard",
@@ -122,6 +174,32 @@
       },
       "tags": [],
       "implicitDependencies": ["dashboard"]
+    },
+    "material": {
+      "projectType": "library",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "resolver-guard",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/material"],
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/material/src/**/*.ts",
+              "libs/material/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
