@@ -11,12 +11,14 @@ import { DataPersistence } from '@nrwl/angular';
 @NgModule({
   imports: [
     CommonModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, name: 'Projects' }),
     StoreModule.forFeature(
       fromProjects.PROJECTS_FEATURE_KEY,
       fromProjects.reducer
     ),
     EffectsModule.forFeature([ProjectsEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, name: 'Projects' }),
   ],
   providers: [ProjectsFacade, DataPersistence],
 })

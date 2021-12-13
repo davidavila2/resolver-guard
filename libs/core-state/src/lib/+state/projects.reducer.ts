@@ -1,7 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
-import { Project } from '@resolver-guard/core-data';
 
+import { Project } from '@resolver-guard/core-data';
 import * as ProjectsActions from './projects.actions';
 
 export const PROJECTS_FEATURE_KEY = 'projects';
@@ -20,7 +20,7 @@ export interface ProjectsPartialState {
 export const projectsAdapter: EntityAdapter<Project> =
   createEntityAdapter<Project>();
 
-const onFailure = (state: any, { error }: any) => ({ ...state, error });
+const onFailure = (state: State, { error }: any) => ({ ...state, error });
 
 export const initialState: State = projectsAdapter.getInitialState({
   // set initial required properties

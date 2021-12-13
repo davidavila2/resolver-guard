@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from '@resolver-guard/core-data';
+import { ProjectsFacade } from '@resolver-guard/core-state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'resolver-guard-projects',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  projects$: Observable<Project[]> = this.projectsFacade.allProjects$;
 
-  constructor() { }
+  constructor(private projectsFacade: ProjectsFacade) { }
 
   ngOnInit(): void {
+    this.projectsFacade.loadProjects()
   }
 
 }
