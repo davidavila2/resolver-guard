@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@resolver-guard/material';
 import { CoreDataModule } from '@resolver-guard/core-data';
 import { CoreStateModule } from '@resolver-guard/core-state';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CoreStateModule } from '@resolver-guard/core-state';
     BrowserAnimationsModule,
     MaterialModule,
     CoreDataModule,
-    CoreStateModule
+    CoreStateModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
