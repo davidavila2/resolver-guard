@@ -1,1 +1,7 @@
-<p *ngFor="let project of projects$ | async"> {{project.title}}</p>
+<div class="container">
+    <div class="col-50">
+      <resolver-guard-project-list [projects]="projects$ | async" (selected)="selectProject($event)"
+        (deleted)="delete($event)">
+      </resolver-guard-project-list>
+    </div>
+</div>

@@ -9,12 +9,27 @@ import { Observable } from 'rxjs';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  selectedProject$ = this.projectsFacade.selectedProject$;
+  loaded$ = this.projectsFacade.loaded$
   projects$: Observable<Project[]> = this.projectsFacade.allProjects$;
 
-  constructor(private projectsFacade: ProjectsFacade) { }
+  constructor(
+    private projectsFacade: ProjectsFacade
+  ) { }
 
   ngOnInit(): void {
-    this.projectsFacade.loadProjects()
+    this.projectsFacade.loadProjects();
+    this.projectsFacade.selectProject('')
   }
+
+  selectProject(project: Project): void {
+    this.projectsFacade.selectProject(project.id);
+  }
+
+  delete(project: Project): void {
+    this.projectsFacade.deleteProject(project);
+  }
+
+
 
 }

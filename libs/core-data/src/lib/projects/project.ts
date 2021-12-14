@@ -10,4 +10,9 @@ export const emptyProject: Project = {
     title: '',
     details: '',
     importanceLevel: 0
-  };
+};
+
+export interface projectResolved {
+    error?: any,
+    project: Project
+}

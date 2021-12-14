@@ -10,6 +10,7 @@ import { MaterialModule } from '@resolver-guard/material';
 import { CoreDataModule } from '@resolver-guard/core-data';
 import { CoreStateModule } from '@resolver-guard/core-state';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
     MaterialModule,
     CoreDataModule,
     CoreStateModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
