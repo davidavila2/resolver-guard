@@ -7,7 +7,7 @@
         </h1>
       </mat-card-title>
     </mat-card-header>
-    <form [formGroup]="form" (submit)="save(this.form.value)">
+    <form [formGroup]="form" (ngSubmit)="save(this.form.value)">
       <mat-card-content>
         <mat-form-field class="full-width">
           <input matInput placeholder="Title" formControlName="title" type="text" name="title">
@@ -27,7 +27,7 @@
       <mat-card-actions>
         <button type="submit" [disabled]="form.invalid" mat-button color="primary">Save</button>
         <button type="button" mat-button >Cancel</button>
-        <button mat-button color="primary" (click)="goBackToProjects()">
+        <button type="button" mat-button color="primary" (click)="goBackToProjects()">
           <mat-icon>reply</mat-icon>
         </button>
       </mat-card-actions>

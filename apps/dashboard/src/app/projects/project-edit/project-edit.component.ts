@@ -14,6 +14,7 @@ export class ProjectEditComponent implements OnInit {
   form!: FormGroup;
   selectedProject$ = this.projectsFacade.selectedProject$;
   loaded$: Observable<boolean> = this.projectsFacade.loaded$;
+  isDirty = false;
 
   constructor(
     private projectsFacade: ProjectsFacade,
@@ -24,6 +25,7 @@ export class ProjectEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.isDirty = this.form.dirty;
     this.route.params.subscribe(param => {
       const id = param['id'];
       this.projectsFacade.selectProject(id)
@@ -32,7 +34,6 @@ export class ProjectEditComponent implements OnInit {
         this.form.patchValue({...project})
       })
     })
-
     this.projectsFacade.mutations$.subscribe(() => this.resetProjects());
   }
 
@@ -50,6 +51,8 @@ export class ProjectEditComponent implements OnInit {
 
   save(project: Project): void {
     project.id ? this.update() : this.create();
+
+    this.goBackToProjects()
   }
 
   goBackToProjects() {

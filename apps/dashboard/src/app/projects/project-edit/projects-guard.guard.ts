@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ProjectEditComponent } from './project-edit.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectsGuardGuard implements CanDeactivate<unknown> {
+export class ProjectsGuardGuard implements CanDeactivate<ProjectEditComponent> {
   canDeactivate(
-    component: unknown,
+    component: ProjectEditComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+      if(!component.isDirty) {
+        // let productName;
+        // component.selectedProject$.subscribe((project) => productName = project?.title);
+        return confirm('navigate away and lose all changes made')
+      }
+      return true
   }
   
 }
