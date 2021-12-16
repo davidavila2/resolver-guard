@@ -26,7 +26,7 @@ export class ProjectsFacade {
     private actions$: ActionsSubject
   ) { }
 
-  selectProject(selectedId: string) {
+  selectProject(selectedId: string | null) {
     this.dispatch(ProjectsActions.selectProject({ selectedId }));
   }
 

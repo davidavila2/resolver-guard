@@ -6,7 +6,7 @@ export const resetProjects = createAction('[Projects] Reset Projects');
 // Select Project
 export const selectProject = createAction(
   '[Projects] Select Project',
-  props<{ selectedId: string }>()
+  props<{ selectedId: string | null }>()
 );
 
 // Load Projects
