@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class ProjectEditComponent implements OnInit {
   form!: FormGroup;
-  selectedProject$ = this.projectsFacade.selectedProject$;
+  selectedProject$: Observable<Project | undefined> = this.projectsFacade.selectedProject$;
   loaded$: Observable<boolean> = this.projectsFacade.loaded$;
   isDirty = false;
 
@@ -26,15 +26,16 @@ export class ProjectEditComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.isDirty = this.form.dirty;
-    // this.route.params.subscribe(param => {
-    //   const id = param['id'];
-    //   this.projectsFacade.selectProject(id)
-    //   this.projectsFacade.loadProject(id);
-    //   this.projectsFacade.selectedProject$.subscribe((project) => {
-    //     this.form.patchValue({...project})
-    //   })
-    // })
-    this.route.snapshot.data['projectData'];
+
+    this.route.data.subscribe((data) => {
+    if (data['projectData'] !== undefined) {
+      this.projectsFacade.selectProject(data['projectData'].id)
+      this.projectsFacade.loadProject(data['projectData']);
+      this.projectsFacade.selectedProject$.subscribe((project) => {
+        this.form.patchValue({...project})
+      })
+    }
+    })
     this.projectsFacade.mutations$.subscribe(() => this.resetProjects());
   }
 

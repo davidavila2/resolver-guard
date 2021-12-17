@@ -67,8 +67,7 @@ export class ProjectsEffects {
   deleteProject$ = createEffect(() =>
     this.dataPersistence.pessimisticUpdate(ProjectsActions.deleteProject, {
       run: (
-        action: ReturnType<typeof ProjectsActions.deleteProject>,
-        state: ProjectsPartialState
+        action: ReturnType<typeof ProjectsActions.deleteProject>
       ) => {
         return this.projectsService.deleteProject(action.project.id).pipe(
           map(() => ProjectsActions.deleteProjectSuccess({ project: action.project }))

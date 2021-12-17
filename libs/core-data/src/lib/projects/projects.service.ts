@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Project } from './project';
+import { Observable, of } from 'rxjs';
+import { emptyProject, Project } from './project';
 
 const BASE_URL = 'https://server-30-x-30.herokuapp.com/';
 
@@ -17,7 +17,7 @@ export class ProjectsService {
     return `${BASE_URL}${this.model}`;
   }
 
-  getUrlWithId(id: string): string {
+  getUrlWithId(id: string | null): string {
     return `${this.getUrl()}/${id}`
   }
 
@@ -25,7 +25,10 @@ export class ProjectsService {
     return this.httpClient.get<Project[]>(this.getUrl());
   }
 
-  getOneProject(id: string): Observable<Project> {
+  getOneProject(id: string | null): Observable<Project> {
+    if (id === '0') {
+      return of(this.initializeProject())
+    }
     return this.httpClient.get<Project>(this.getUrlWithId(id))
   }
 
@@ -39,5 +42,11 @@ export class ProjectsService {
 
   deleteProject(id: string): Observable<Project> {
     return this.httpClient.delete<Project>(this.getUrlWithId(id))
+  }
+
+  private initializeProject(): Project {
+    return {
+      ...emptyProject,
+    }
   }
 }

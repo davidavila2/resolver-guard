@@ -8,15 +8,15 @@ import { ProjectResolverResolver } from './projects/project-edit/project-resolve
 const routes: Routes = [
     { path: 'projects', component: ProjectsComponent },
     { 
+      path: 'projects/add', 
+      canDeactivate: [ProjectsGuardGuard],
+      component: ProjectEditComponent
+    },
+    { 
       path: 'projects/:id', 
       canDeactivate: [ProjectsGuardGuard],
       component: ProjectEditComponent,
       resolve: { projectData: ProjectResolverResolver }
-    },
-    { 
-      path: 'projects/add', 
-      canDeactivate: [ProjectsGuardGuard],
-      component: ProjectEditComponent
     },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' }
   ];

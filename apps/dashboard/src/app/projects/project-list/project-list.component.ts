@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from '@resolver-guard/core-data';
 
 @Component({
@@ -11,4 +12,15 @@ export class ProjectListComponent {
   @Input() loaded = false;
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
+
+  constructor(private router: Router) {}
+
+  add() {
+    this.router.navigateByUrl('projects/add', {
+      state: {
+        skipResolver: true,
+      }
+    }
+  )
+  }
 }
