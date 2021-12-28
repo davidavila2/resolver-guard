@@ -9,7 +9,7 @@ import { Project } from '@resolver-guard/core-data';
 })
 export class ProjectListComponent {
   @Input() projects!: Project[] | null;
-  @Input() loaded = false;
+  @Input() loaded!: boolean | null
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
 

@@ -13,11 +13,8 @@ export class ProjectsGuardGuard implements CanDeactivate<ProjectEditComponent> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(!component.isDirty) {
-        // let productName;
-        // component.selectedProject$.subscribe((project) => productName = project?.title);
         return confirm('navigate away and lose all changes made')
       }
-      return true
+      return true;
   }
-  
 }

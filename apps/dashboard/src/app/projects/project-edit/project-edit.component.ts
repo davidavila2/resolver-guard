@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class ProjectEditComponent implements OnInit {
   form!: FormGroup;
   selectedProject$: Observable<Project | undefined> = this.projectsFacade.selectedProject$;
-  loaded$: Observable<boolean> = this.projectsFacade.loaded$;
+  loaded$: Observable<boolean | null> = this.projectsFacade.loaded$;
   isDirty = false;
 
   constructor(
@@ -28,13 +28,13 @@ export class ProjectEditComponent implements OnInit {
     this.isDirty = this.form.dirty;
 
     this.route.data.subscribe((data) => {
-    if (data['projectData'] !== undefined) {
-      this.projectsFacade.selectProject(data['projectData'].id)
-      this.projectsFacade.loadProject(data['projectData']);
-      this.projectsFacade.selectedProject$.subscribe((project) => {
-        this.form.patchValue({...project})
-      })
-    }
+      if (data['projectData'] !== undefined) {
+        this.projectsFacade.selectProject(data['projectData'].id)
+        this.projectsFacade.loadProject(data['projectData']);
+        this.projectsFacade.selectedProject$.subscribe((project) => {
+          this.form.patchValue({...project})
+        })
+      }
     })
     this.projectsFacade.mutations$.subscribe(() => this.resetProjects());
   }

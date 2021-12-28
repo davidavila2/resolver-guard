@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit {
   selectedProject$ = this.projectsFacade.selectedProject$;
-  loaded$ = this.projectsFacade.loaded$
+  loaded$ = this.projectsFacade.loaded$;
   projects$: Observable<Project[]> = this.projectsFacade.allProjects$;
 
   constructor(
@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectsFacade.loadProjects();
-    this.projectsFacade.selectProject('')
+    this.projectsFacade.selectProject('');
   }
 
   selectProject(project: Project): void {
@@ -29,7 +29,4 @@ export class ProjectsComponent implements OnInit {
   delete(project: Project): void {
     this.projectsFacade.deleteProject(project);
   }
-
-
-
 }

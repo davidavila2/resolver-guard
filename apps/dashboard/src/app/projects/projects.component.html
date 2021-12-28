@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-50">
       <resolver-guard-project-list [projects]="projects$ | async" (selected)="selectProject($event)"
-        (deleted)="delete($event)">
+        (deleted)="delete($event)" [loaded]="loaded$ | async">
       </resolver-guard-project-list>
     </div>
 </div>

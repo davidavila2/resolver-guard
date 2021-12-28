@@ -8,7 +8,7 @@ export const PROJECTS_FEATURE_KEY = 'projects';
 
 export interface State extends EntityState<Project> {
   selectedId?: string | number; // which Projects record has been selected
-  loaded: boolean; // has the Projects list been loaded
+  loaded: boolean | null; // has the Projects list been loaded
   error?: string | null; // last known error (if any)
   projects: Project[];
 }
