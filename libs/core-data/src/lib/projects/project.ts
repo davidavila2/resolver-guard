@@ -3,7 +3,7 @@ export interface Project {
     title: string,
     details: string,
     importanceLevel: number
-}
+};
 
 export const emptyProject: Project = {
     id: '0',
@@ -15,4 +15,4 @@ export const emptyProject: Project = {
 export interface projectResolved {
     error?: any,
     project: Project
-}
+};
