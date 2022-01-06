@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectResolverResolver implements Resolve<Observable<Project | undefined>> {
+export class ProjectEditResolver implements Resolve<Observable<Project | undefined>> {
   constructor(private projectsService: ProjectsService) {}
   resolve(route: ActivatedRouteSnapshot): Observable<Project | undefined> {
     const id = route.paramMap.get('id') || null;

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectsGuardGuard } from './projects/project-edit/projects-guard.guard';
-import { ProjectResolverResolver } from './projects/project-edit/project-resolver.resolver';
+import { ProjectEditResolver } from './projects/project-edit/project-edit.resolver';
 
 const routes: Routes = [
     { path: 'projects', component: ProjectsComponent },
@@ -16,7 +16,7 @@ const routes: Routes = [
       path: 'projects/:id', 
       canDeactivate: [ProjectsGuardGuard],
       component: ProjectEditComponent,
-      resolve: { projectData: ProjectResolverResolver }
+      resolve: { projectData: ProjectEditResolver }
     },
     { path: '**', redirectTo: 'projects', pathMatch: 'full' }
   ];
