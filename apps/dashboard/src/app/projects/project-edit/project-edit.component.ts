@@ -25,7 +25,10 @@ export class ProjectEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.isDirty = this.form.dirty;
+
+    this.form.valueChanges.subscribe(() => {
+      this.isDirty = this.form.dirty;
+    });
 
     this.route.data.subscribe((data) => {
       if (data['projectData'] !== undefined) {
@@ -37,6 +40,7 @@ export class ProjectEditComponent implements OnInit {
       }
     })
     this.projectsFacade.mutations$.subscribe(() => this.resetProjects());
+    
   }
 
   resetProjects(): void {
@@ -57,11 +61,11 @@ export class ProjectEditComponent implements OnInit {
     this.goBackToProjects()
   }
 
-  goBackToProjects() {
+  goBackToProjects(): void {
     this.router.navigate(['/projects']);
   }
 
-  private initForm() {
+  private initForm(): void {
     this.form = this.formBuilder.group({
       id: null,
       title: ['', Validators.compose([Validators.required])],
