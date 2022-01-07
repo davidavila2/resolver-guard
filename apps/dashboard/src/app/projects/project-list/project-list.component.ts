@@ -16,11 +16,6 @@ export class ProjectListComponent {
   constructor(private router: Router) {}
 
   add() {
-    this.router.navigateByUrl('projects/add', {
-      state: {
-        skipResolver: true,
-      }
-    }
-  )
+    this.router.navigateByUrl('projects/add');
   }
 }
