@@ -6,7 +6,7 @@ import { ProjectEditComponent } from './project-edit.component';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectsGuardGuard implements CanDeactivate<ProjectEditComponent> {
+export class ProjectsGuard implements CanDeactivate<ProjectEditComponent> {
   canDeactivate(
     component: ProjectEditComponent,
     currentRoute: ActivatedRouteSnapshot,
