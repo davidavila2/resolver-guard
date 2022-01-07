@@ -10,7 +10,7 @@ export class ProjectsGuard implements CanDeactivate<ProjectEditComponent> {
   canDeactivate(
     component: ProjectEditComponent): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(component.isDirty) {
-        return confirm('navigate away and lose all changes made');
+        return confirm('There are unsaved changes to your project. Are you sure you want to leave this page?');
       };
       return true;
   }
