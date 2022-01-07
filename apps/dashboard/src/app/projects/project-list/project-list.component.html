@@ -11,7 +11,7 @@
     <mat-progress-spinner *ngIf="!loaded" mode="indeterminate"></mat-progress-spinner>
     <mat-card-content *ngIf="loaded">
       <mat-list>
-        <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)">
+        <mat-list-item *ngFor="let project of projects" (click)="selected.emit(project)" [routerLink]="project.id">
           <h3 mat-line class="project">
             {{project.title}}
           </h3>
@@ -20,9 +20,6 @@
           </p>
           <button class="delete" mat-icon-button (click)="deleted.emit(project);$event.stopImmediatePropagation()">
             <mat-icon>close</mat-icon>
-          </button>
-          <button class="reroute" mat-icon-button (click)="$event.stopImmediatePropagation()" [routerLink]="project.id">
-            <mat-icon>more_vert</mat-icon>
           </button>
         </mat-list-item>
       </mat-list>
