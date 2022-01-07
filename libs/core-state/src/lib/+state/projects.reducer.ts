@@ -34,9 +34,6 @@ const projectsReducer = createReducer(
   on(ProjectsActions.selectProject, (state, { selectedId }) =>
     Object.assign({}, state, { selectedId })
   ),
-  // on(ProjectsActions.resetSelectedProject, (state) =>
-  //   Object.assign({}, state, { selectedId: null })
-  // ),
   on(ProjectsActions.resetProjects, (state) =>
     projectsAdapter.removeAll(state)
   ),
@@ -64,7 +61,7 @@ const projectsReducer = createReducer(
     projectsAdapter.updateOne({ id: project.id, changes: project }, state)
   ),
   on(ProjectsActions.deleteProjectSuccess, (state, { project }) =>
-    projectsAdapter.removeOne(project.id, { ...state, isLoading: false })
+    projectsAdapter.removeOne(project.id, { ...state, loaded: true })
   ),
   on(ProjectsActions.loadProjectFailure, onFailure),
   on(ProjectsActions.loadProjectsFailure, onFailure),

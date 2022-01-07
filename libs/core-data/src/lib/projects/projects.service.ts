@@ -40,8 +40,8 @@ export class ProjectsService {
     return this.httpClient.patch<Project>(this.getUrlWithId(project.id), project)
   }
 
-  deleteProject(id: string): Observable<Project> {
-    return this.httpClient.delete<Project>(this.getUrlWithId(id))
+  deleteProject(project: Project): Observable<Project> {
+    return this.httpClient.delete<Project>(this.getUrlWithId(project.id))
   }
 
   private initializeProject(): Project {

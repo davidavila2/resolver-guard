@@ -20,6 +20,8 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.projectsFacade.loadProjects();
     this.projectsFacade.selectProject('');
+
+    this.projectsFacade.mutations$.subscribe(() => this.projectsFacade.loadProjects());
   }
 
   selectProject(project: Project): void {

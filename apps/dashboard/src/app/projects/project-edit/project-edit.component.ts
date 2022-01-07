@@ -40,7 +40,6 @@ export class ProjectEditComponent implements OnInit {
       }
     })
     this.projectsFacade.mutations$.subscribe(() => this.resetProjects());
-    
   }
 
   resetProjects(): void {

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { DataPersistence, fetch, pessimisticUpdate } from '@nrwl/angular';
+import { fetch, pessimisticUpdate } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
 import { Project, ProjectsService } from '@resolver-guard/core-data';
 import * as ProjectsActions from './projects.actions';
-import { ProjectsPartialState } from './projects.reducer';
 
 @Injectable()
 export class ProjectsEffects {
@@ -64,22 +63,20 @@ export class ProjectsEffects {
     })
   ));
 
-  deleteProject$ = createEffect(() =>
-    this.dataPersistence.pessimisticUpdate(ProjectsActions.deleteProject, {
-      run: (
-        action: ReturnType<typeof ProjectsActions.deleteProject>
-      ) => {
-        return this.projectsService.deleteProject(action.project.id).pipe(
-          map(() => ProjectsActions.deleteProjectSuccess({ project: action.project }))
+  deleteProject$ = createEffect(() => this.actions$.pipe(
+    ofType(ProjectsActions.deleteProject),
+    pessimisticUpdate({
+      run: (action) => this.projectsService.deleteProject(action.project).pipe(
+        map((project: Project) =>
+          ProjectsActions.deleteProjectSuccess({ project })
         )
-      },
-      onError: (action: ReturnType<typeof ProjectsActions.deleteProject>, error) => console.log(error)
+      ),
+      onError: (action, error) => console.log(error)
     })
-  );
+  ));
 
   constructor(
     private actions$: Actions,
-    private projectsService: ProjectsService,
-    private dataPersistence: DataPersistence<ProjectsPartialState>
+    private projectsService: ProjectsService
     ) {}
 }
