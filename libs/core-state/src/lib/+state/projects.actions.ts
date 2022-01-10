@@ -25,7 +25,7 @@ export const loadProjectsFailure = createAction(
 // Load Project
 export const loadProject = createAction(
   '[Projects] Load Project',
-  props<{ project: Project }>()
+  props<{ projectId: string | null }>()
 );
 
 export const loadProjectSuccess = createAction(

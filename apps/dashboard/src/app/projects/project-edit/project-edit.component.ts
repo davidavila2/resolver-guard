@@ -32,8 +32,8 @@ export class ProjectEditComponent implements OnInit {
 
     this.route.data.subscribe((data) => {
       if (data['projectData'] !== undefined) {
-        this.projectsFacade.selectProject(data['projectData'].id)
-        this.projectsFacade.loadProject(data['projectData']);
+        this.projectsFacade.selectProject(data['projectData'].id);
+        this.projectsFacade.loadProject(data['projectData'].id);
         this.projectsFacade.selectedProject$.subscribe((project) => {
           this.form.patchValue({...project})
         })

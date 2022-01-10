@@ -13,7 +13,7 @@ export class ProjectsEffects {
     fetch({
       run: (action) => {
         this.projectsService
-          .getOneProject(action.project.id)
+          .getOneProject(action.projectId)
           .pipe(
             map((project: Project) =>
               ProjectsActions.loadProjectSuccess({ project })
