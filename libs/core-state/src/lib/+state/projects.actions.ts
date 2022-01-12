@@ -9,6 +9,11 @@ export const selectProject = createAction(
   props<{ selectedId: string | null }>()
 );
 
+export const projectSelected = createAction(
+  '[Projects] Project Selected',
+  props<{ project: Project }>()
+);
+
 // Load Projects
 export const loadProjects = createAction('[Projects] Load Projects');
 
@@ -89,3 +94,8 @@ export const deleteProjectFailure = createAction(
   '[Projects] Delete Project Failure',
   props<{ error: string }>()
 );
+
+// UI Actions
+export const backToProjectsClicked = createAction(
+  '[Projects/UI] Back To Projects Clicked'
+)

@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Project, ProjectsService } from '@resolver-guard/core-data';
-import { Observable } from 'rxjs';
+import { Resolve } from '@angular/router';
+import { Project } from '@resolver-guard/core-data';
+import { ProjectsFacade } from '@resolver-guard/core-state';
+import { Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectEditResolver implements Resolve<Observable<Project | undefined>> {
-  constructor(private projectsService: ProjectsService) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<Project | undefined> {
-    const id = route.paramMap.get('id') || null;
-    return this.projectsService.getOneProject(id);
+  constructor(
+    private projectsFacade: ProjectsFacade
+    ) {}
+
+  resolve() {
+    return this.projectsFacade.selectedProject$.pipe(
+      take(1)
+    );
   }
 }

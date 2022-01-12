@@ -9,7 +9,7 @@ import { ProjectEditComponent } from './project-edit.component';
 export class ProjectsGuard implements CanDeactivate<ProjectEditComponent> {
   canDeactivate(
     component: ProjectEditComponent): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(component.isDirty) {
+      if(component.form.dirty) {
         return confirm('There are unsaved changes to your project. Are you sure you want to leave this page?');
       };
       return true;

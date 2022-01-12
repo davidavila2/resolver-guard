@@ -26,6 +26,10 @@ export class ProjectsFacade {
     private actions$: ActionsSubject
   ) { }
 
+  backToProjectsClicked() {
+    this.dispatch(ProjectsActions.backToProjectsClicked())
+  }
+
   selectProject(selectedId: string | null) {
     this.dispatch(ProjectsActions.selectProject({ selectedId }));
   }

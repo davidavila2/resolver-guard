@@ -26,9 +26,9 @@ export class ProjectsService {
   }
 
   getOneProject(id: string | null): Observable<Project> {
-    if (id === '0') {
+    if (id === '0' || 0) {
       return of(this.initializeProject())
-    }
+    };
     return this.httpClient.get<Project>(this.getUrlWithId(id))
   }
 
