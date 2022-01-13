@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { ProjectsGuard } from './projects/project-edit/projects-guard.guard';
+import { ProjectsGuard } from './projects/project-edit/project-edit.guard';
 import { ProjectEditResolver } from './projects/project-edit/project-edit.resolver';
 
 const routes: Routes = [
